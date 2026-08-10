@@ -112,5 +112,34 @@ void RedBlackTree<T>::fixInsert(RedBlackTreeNode<T> *&k) {
 }
 
 
+template <class T>
+void RedBlackTree<T>::insert(T data) {
+    auto *node = new RedBlackTreeNode<T>(data);
+    node->left = node->right = NIL;
+
+    RedBlackTreeNode<T> *parent = nullptr;
+    auto *current = root;
+
+    while (current != NIL) {
+        parent = current;
+        if (node->data < current->data) current = current->left;
+        else current = current->right;
+    }
+
+    node->parent = parent;
+
+    if (parent == nullptr) root = node;
+    else if (node->data < parent->data) parent->left = node;
+    else parent->right = node;
+
+    if (node->parent == nullptr) {
+        node->color = "BLACK";
+        return;
+    }
+    if (node->parent->parent == nullptr) return;
+    fixInsert(node);
+}
+
+
 
 #endif //RED_BLACK_TREE_RBTREE_H
