@@ -11,10 +11,10 @@ class RedBlackTreeNode {
 public:
     T data;
     std::string color;
-    RedBlackTreeNode<T> *left, *right;
+    RedBlackTreeNode<T> *left, *right, *parent;
 
     explicit RedBlackTreeNode(T data)
-    : data(data), left(nullptr), right(nullptr) {};
+    : data(data), left(nullptr), right(nullptr), parent(nullptr) {};
 };
 
 template <class T>
@@ -67,6 +67,13 @@ void RedBlackTree<T>::rightRotate(RedBlackTreeNode<T> *&x) {
 
     y->right = x;
     x->parent = y;
+}
+
+template <class T>
+void RedBlackTree<T>::fixInsert(RedBlackTreeNode<T> *&k) {
+    while (k != root && k->parent->color == "red") {
+
+    }
 }
 
 
