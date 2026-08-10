@@ -12,5 +12,9 @@ int main() {
     rbt.insert(40);
     rbt.insert(50);
 
+    std::cout << "Inorder Traversal -> ";
+    rbt.inorderTraversal(rbt.getRoot());
+    std::cout << std::endl;
+
     return 0;
 }
