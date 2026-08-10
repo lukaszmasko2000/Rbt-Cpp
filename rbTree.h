@@ -147,7 +147,7 @@ template <class T>
 void RedBlackTree<T>::inorderTraversal(RedBlackTreeNode<T> *node) {
     if (node != NIL) {
         inorderTraversal(node->left);
-        std::cout << node->data << "(" << node->color << ")";
+        std::cout << node->data << " (" << node->color << ") ";
         inorderTraversal(node->right);
     }
 }
