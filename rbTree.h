@@ -61,7 +61,7 @@ void RedBlackTree<T>::rightRotate(RedBlackTreeNode<T> *&x) {
     RedBlackTreeNode<T> *y = x->left;
     x->left = y->right;
 
-    if (y->right != NIL)  y->rigth->parent = x;
+    if (y->right != NIL)  y->right->parent = x;
     y->parent = x->parent;
 
     if (x->parent == nullptr)  root = y;
