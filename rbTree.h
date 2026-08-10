@@ -71,9 +71,44 @@ void RedBlackTree<T>::rightRotate(RedBlackTreeNode<T> *&x) {
 
 template <class T>
 void RedBlackTree<T>::fixInsert(RedBlackTreeNode<T> *&k) {
-    while (k != root && k->parent->color == "red") {
+    while (k != root && k->parent->color == "RED") {
+        if (k->parent == k->parent->parent->left) {
+            RedBlackTreeNode<T>* uncle = k->parent->parent->right;
 
+            if (uncle->color == "RED") {
+                k->parent->color = "BLACK";
+                uncle->color = "BLACK";
+                k->parent->parent->color = "RED";
+                k = k->parent->parent;
+            }
+            else {
+                if (k == k->parent->right) {
+                    k = k->parent;
+                    leftRotate(k);
+                }
+                k->parent->color = "BLACK";
+                k->parent->parent->color = "RED";
+                rightRotate(k->parent->parent);
+            }
+        } else {
+            RedBlackTreeNode<T>* uncle = k->parent->parent->left;
+            if (uncle->color == "RED") {
+                k->parent->color = "BLACK";
+                uncle->color = "BLACK";
+                k->parent->parent->color = "RED";
+                k = k->parent->parent;
+            } else {
+                if (k == k->parent->left) {
+                    k = k->parent;
+                    rightRotate(k);
+                }
+                k->parent->color = "BLACK";
+                k->parent->parent->color = "RED";
+                leftRotate(k->parent->parent);
+            }
+        }
     }
+    root->color = "BLACK";
 }
 
 
