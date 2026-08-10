@@ -11,9 +11,13 @@ class RedBlackTreeNode {
 public:
     T data;
     std::string color;
-    RedBlackTreeNode<T> *left = nullptr, *right = nullptr, *parent = nullptr;
+    RedBlackTreeNode<T> *left, *right, *parent;
 
-    RedBlackTreeNode() : data(T()) {}
+    RedBlackTreeNode()
+    : data(T()), left(nullptr), right(nullptr), parent(nullptr), color("BLACK") {}
+
+    explicit RedBlackTreeNode(T val)
+    : data(val), left(nullptr), right(nullptr), parent(nullptr), color("BLACK") {}
 };
 
 template <class T>
