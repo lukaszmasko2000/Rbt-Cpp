@@ -140,6 +140,13 @@ void RedBlackTree<T>::insert(T data) {
     fixInsert(node);
 }
 
-
+template <class T>
+void RedBlackTree<T>::inorderTraversal(RedBlackTreeNode<T> *node) {
+    if (node != NIL) {
+        inorderTraversal(node->left);
+        std::cout << node->data << "(" << node->color << ")";
+        inorderTraversal(node->right);
+    }
+}
 
 #endif //RED_BLACK_TREE_RBTREE_H
